@@ -1,0 +1,4 @@
+# generate keys
+echo "Y" | ssh-keygen -t rsa -P "" -f /Users/edin-m/bigdata/cluster-hadoop-docker/config/id_rsa
+
+
