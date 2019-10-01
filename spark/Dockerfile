@@ -1,6 +1,4 @@
-FROM hadoop
-
-MAINTAINER Aditya Pal <aditya.pal.science@gmail.com>
+FROM all-base
 
 USER root
 

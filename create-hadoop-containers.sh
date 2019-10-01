@@ -3,7 +3,7 @@
 sudo apt-get install -y openssh-client
 docker network create --subnet=172.18.0.0/16 hadoopnet
 
-docker build -t hadoop -f base/Dockerfile .
+docker build -t hadoop -f hadoop/Dockerfile .
 
 docker run -d --net hadoopnet --ip 172.18.1.1 -p 9000:9000 -p 9870:9870 -p 8088:8088 -p 50070:50070 -p 50090:50090 -p 10020:10020 \
     --hostname nodemaster \
