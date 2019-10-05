@@ -14,5 +14,3 @@ RUN mkdir /home/hadoop/zookeeper-logs
 ADD config/zoo.cfg $ZOOKEEPER_HOME/conf/zoo.cfg
 
 CMD bash
-
-

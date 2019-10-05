@@ -7,6 +7,7 @@ RUN wget -P /home/hadoop https://archive.apache.org/dist/hadoop/core/hadoop-3.2.
 	mv /home/hadoop/hadoop-3.2.0 /home/hadoop/hadoop
 
 # set environment variables
+ENV JAVA_HOME /usr/local/openjdk-8
 ENV HADOOP_HOME /home/hadoop/hadoop
 ENV HADOOP_CONF_DIR $HADOOP_HOME/etc/hadoop
 ENV HADOOP_MAPRED_HOME $HADOOP_HOME 
@@ -17,6 +18,7 @@ ENV YARN_HOME $HADOOP_HOME
 ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
 # set hadoop-env.sh
+RUN echo "export JAVA_HOME=/usr/local/openjdk-8" >> /home/hadoop/hadoop/etc/hadoop/hadoop-env.sh
 RUN echo "export HADOOP_HOME=/home/hadoop/hadoop" >> /home/hadoop/hadoop/etc/hadoop/hadoop-env.sh
 RUN echo "export HADOOP_CONF_DIR=/home/hadoop/hadoop/etc/hadoop" >> /home/hadoop/hadoop/etc/hadoop/hadoop-env.sh
 RUN echo "export HDFS_NAMENODE_USER=hadoop" >> /home/hadoop/hadoop/etc/hadoop/hadoop-env.sh
@@ -28,11 +30,11 @@ RUN mkdir -p /home/hadoop/data/nameNode \
 	/home/hadoop/data/dataNode \
 	/home/hadoop/data/nameNodeSecondary \
 	/home/hadoop/data/tmp /home/hadoop/hadoop/logs
-ADD configs/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
-ADD configs/hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
-ADD configs/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
-ADD configs/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
-ADD configs/workers $HADOOP_HOME/etc/hadoop/workers
+ADD config/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
+ADD config/hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+ADD config/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
+ADD config/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
+ADD config/workers $HADOOP_HOME/etc/hadoop/workers
 
 # permissions
 # RUN chown hadoop -R /home/hadoop/data
@@ -44,13 +46,16 @@ ADD configs/workers $HADOOP_HOME/etc/hadoop/workers
 # Gradle
 #ARG gradle_version=3.5
 #RUN \
-  cd /home/hadoop && \
-  wget https://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip && \
-  unzip -d /home/hadoop/gradle gradle-${gradle_version}-bin.zip && \
-  rm gradle-${gradle_version}-bin.zip
+#  cd /home/hadoop && \
+#  wget https://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip && \
+#  unzip -d /home/hadoop/gradle gradle-${gradle_version}-bin.zip && \
+#  rm gradle-${gradle_version}-bin.zip
 
 # ENV PATH="${PATH}:/home/hadoop/gradle/gradle-${gradle_version}/bin"
 
+USER root
+
 CMD service ssh start && bash
+
 
 

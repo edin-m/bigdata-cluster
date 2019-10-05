@@ -2,6 +2,11 @@
 # hadoopnet
 172.18.0.0/16
 
+172.18.1.1x => hadoop
+172.18.1.5x => zookeeper
+172.18.1.6x => kafka
+172.18.1.7x => spark
+
 # zookeeper servers
 zoo1			172.18.1.51			2181 =>	2181
 zoo2			172.18.1.52			2181 => 2182
