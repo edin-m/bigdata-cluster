@@ -2,3 +2,7 @@ tutorial
 config/id_rsa*
 
 .DS_Store
+downloads/**
+!downloads/download-deps.sh
+.vagrant
+*.log
