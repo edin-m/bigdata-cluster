@@ -15,3 +15,8 @@ docker build -t hadoop -f cluster/hadoop/Dockerfile cluster/hadoop
 # Kafka
 docker build -t kafka -f cluster/kafka/Dockerfile cluster/kafka
 
+# Spark
+docker build -t spark -f cluster/spark/Dockerfile cluster/spark
+
+
+
