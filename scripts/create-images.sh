@@ -11,3 +11,7 @@ docker build -t zookeeper -f cluster/zookeeper/Dockerfile cluster/zookeeper
 
 # hadoop
 docker build -t hadoop -f cluster/hadoop/Dockerfile cluster/hadoop
+
+# Kafka
+docker build -t kafka -f cluster/kafka/Dockerfile cluster/kafka
+
