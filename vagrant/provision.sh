@@ -17,6 +17,7 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-echo "export JAVA_HOME=$JAVA_HOME" >> /home/vagrant/.bashrc
-echo "export PATH=$JAVA_HOME/bin:$PATH:/bigdata/hadoop/bin" >> /home/vagrant/.bashrc
+GRADLE_HOME=/bigdata/downloads/gradle-5.6.2
 
+echo "export JAVA_HOME=$JAVA_HOME" >> /home/vagrant/.bashrc
+echo "export PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$PATH:/bigdata/hadoop/bin" >> /home/vagrant/.bashrc

@@ -6,3 +6,6 @@ downloads/**
 !downloads/download-deps.sh
 .vagrant
 *.log
+
+.gradle
+.idea

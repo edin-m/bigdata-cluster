@@ -14,3 +14,6 @@ tar -C downloads -xf downloads/spark-2.4.4-bin-hadoop2.6.tgz
 # kafka
 wget -P downloads https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
 
+# gradle
+wget -P downloads https://downloads.gradle-dn.com/distributions/gradle-5.6.2-bin.zip
+unzip -d downloads downloads/gradle-5.6.2-bin.zip
