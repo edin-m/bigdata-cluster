@@ -94,17 +94,17 @@ task deployDependenciesPre(type: Exec) {
     commandLine "$HADOOP_HOME/bin/hdfs", "dfs", "-mkdir", "-p", "$HDFS_APP_URL/${project.name}"
 }
 
-// run from inside vagrant
-task deployDependencies(type: Exec) {
-    dependsOn copyRuntimeLibs, deployDependenciesPre
-    commandLine "$HADOOP_HOME/bin/hdfs", "dfs", "-copyFromLocal", "-f", "$buildDir/output/deps", "$HDFS_APP_URL/${project.name}"
+task writeDepsToFile {
+    def files = fileTree("$buildDir/output/deps").filter { it.isFile() }.files.name
+    def str = files.collect { "$HDFS_APP_URL/deps/" + it }.join(",")
+
+    new File("deps.txt").text = str
 }
 
-task delTask {
-    def files = fileTree("$buildDir/output/deps").filter { it.isFile() }.files.name
-    println files.collect { "$HDFS_APP_URL/deps/" + it }.join(",")
-//    files = files.stream().map { file -> "$HDFS_APP_URL/deps/" + file }.collect(Collectors.toSet())
-//    println files.join(",")
+// run from inside vagrant
+task deployDependencies(type: Exec) {
+    dependsOn copyRuntimeLibs, deployDependenciesPre, writeDepsToFile
+    commandLine "$HADOOP_HOME/bin/hdfs", "dfs", "-copyFromLocal", "-f", "$buildDir/output/deps", "$HDFS_APP_URL/${project.name}"
 }
 
 /**

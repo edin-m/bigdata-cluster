@@ -18,5 +18,6 @@ ADD config/id_rsa.pub /home/hadoop/.ssh/id_rsa.pub
 ADD config/id_rsa /home/hadoop/.ssh/id_rsa
 RUN cat /home/hadoop/.ssh/id_rsa.pub >> /home/hadoop/.ssh/authorized_keys
 RUN chown hadoop:hadoop -R /home/hadoop/.ssh
+RUN chmod 600 /home/hadoop/.ssh/id_rsa
 
 USER hadoop

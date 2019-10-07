@@ -33,3 +33,27 @@ sparknode2		172.18.1.72			8081 => 8081 (web), 7077 => 7078
 sparkode3		172.18.1.73			8081 => 8082 (web), 7077 => 7079
 
 ```
+
+To run all:
+
+Init keys: `$ sh scripts/init-ssh-keys.sh`
+
+Init libs: `$ sh scripts/init-downloads.sh`
+
+Init vagrant: `$ sh scripts/init-vagrant.sh`
+
+Run vagrant:
+```
+$ cd vagrant
+$ vagrant up
+$ vagrant ssh
+```
+
+Inside vagrant:
+```
+$ cd /bigdata
+$ sh scripts/create-images.sh
+$ sh scripts/create-containers.sh
+```
+
+
