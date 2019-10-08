@@ -8,3 +8,5 @@ sh scripts/create-kafka-containers.sh
 
 sh scripts/create-spark-containers.sh
 
+sh scripts/create-hbase-containers.sh
+

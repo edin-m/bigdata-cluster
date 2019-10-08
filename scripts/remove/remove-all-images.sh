@@ -1,0 +1,1 @@
+docker rmi cluster-base zookeeper hadoop kafka spark hbase

@@ -17,3 +17,8 @@ wget -P downloads https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tg
 # gradle
 wget -P downloads https://downloads.gradle-dn.com/distributions/gradle-5.6.2-bin.zip
 unzip -d downloads downloads/gradle-5.6.2-bin.zip
+
+# hbase
+wget -P downloads https://www-eu.apache.org/dist/hbase/2.2.1/hbase-2.2.1-bin.tar.gz
+tar -C downloads -xf downloads/hbase-2.2.1-bin.tar.gz
+

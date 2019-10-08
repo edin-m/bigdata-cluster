@@ -22,3 +22,5 @@ HADOOP_HOME=/bigdata/downloads/hadoop-3.2.0
 
 echo "export JAVA_HOME=$JAVA_HOME" >> /home/vagrant/.bashrc
 echo "export PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:${HADOOP_HOME}/bin:$PATH:/bigdata/hadoop/bin" >> /home/vagrant/.bashrc
+
+# log in, sudo vim /etc/hosts, add: 127.0.0.1 nodemaster

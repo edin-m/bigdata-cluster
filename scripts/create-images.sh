@@ -18,5 +18,8 @@ docker build -t kafka -f cluster/kafka/Dockerfile cluster/kafka
 # Spark
 docker build -t spark -f cluster/spark/Dockerfile cluster/spark
 
+# HBase
+docker build -t hbase -f cluster/hbase/Dockerfile cluster/hbase
+
 
 

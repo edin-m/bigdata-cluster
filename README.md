@@ -6,6 +6,7 @@
 172.18.1.5x => zookeeper
 172.18.1.6x => kafka
 172.18.1.7x => spark
+172.18.1.8x => hbase
 
 								container => host
 # zookeeper servers
@@ -32,6 +33,10 @@ sparkmaster		172.18.1.71			8080 => 8080 (web), 7077 => 7077
 sparknode2		172.18.1.72			8081 => 8081 (web), 7077 => 7078
 sparkode3		172.18.1.73			8081 => 8082 (web), 7077 => 7079
 
+# HBase servers
+hbase1			172.18.1.81			16010 => 16010
+hbase2			172.18.1.82			16030 => 16030
+hbase3			172.18.1.83			16030 => 16031
 ```
 
 To run all:
