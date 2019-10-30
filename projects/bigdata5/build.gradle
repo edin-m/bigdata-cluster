@@ -13,9 +13,8 @@ repositories {
     mavenCentral()
 }
 
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
-import java.util.stream.Collectors
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar 
 
 task buildOnlyDependencies(type: ShadowJar) {
     archiveFileName = project.name + '-deps.jar'
