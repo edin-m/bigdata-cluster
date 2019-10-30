@@ -1,7 +1,7 @@
 
 docker run -d --net hadoopnet --ip 172.18.1.81 \
     --hostname hbase1 \
-    -p 16010:16010 \
+    -p 16010:16010 -p 16000:16000 \
     --add-host hbase2:172.18.1.82 --add-host hbase3:172.18.1.83 \
     --add-host nodemaster:172.18.1.11 --add-host datanode2:172.18.1.12 --add-host datanode3:172.18.1.13 \
     --add-host zoo1:172.18.1.51 --add-host zoo2:172.18.1.52 --add-host zoo3:172.18.1.53 \
@@ -9,7 +9,7 @@ docker run -d --net hadoopnet --ip 172.18.1.81 \
 
 docker run -d --net hadoopnet --ip 172.18.1.82 \
     --hostname hbase2 \
-    -p 16030:16030 \
+    -p 16030:16030 -p 16022:16020 \
     --add-host hbase1:172.18.1.81 --add-host hbase3:172.18.1.83 \
     --add-host nodemaster:172.18.1.11 --add-host datanode2:172.18.1.12 --add-host datanode3:172.18.1.13 \
     --add-host zoo1:172.18.1.51 --add-host zoo2:172.18.1.52 --add-host zoo3:172.18.1.53 \
@@ -17,7 +17,7 @@ docker run -d --net hadoopnet --ip 172.18.1.82 \
 
 docker run -d --net hadoopnet --ip 172.18.1.83 \
     --hostname hbase3 \
-    -p 16031:16030 \
+    -p 16031:16030 -p 16023:16020 \
     --add-host hbase1:172.18.1.81 --add-host hbase2:172.18.1.82 \
     --add-host nodemaster:172.18.1.11 --add-host datanode2:172.18.1.12 --add-host datanode3:172.18.1.13 \
     --add-host zoo1:172.18.1.51 --add-host zoo2:172.18.1.52 --add-host zoo3:172.18.1.53 \
@@ -32,7 +32,7 @@ docker exec -u hadoop hbase1 bash -c 'ssh-keyscan hbase2 >> $HOME/.ssh/known_hos
 docker exec -u hadoop hbase1 bash -c 'ssh-keyscan hbase3 >> $HOME/.ssh/known_hosts'
 
 docker exec -u hadoop hbase2 bash -c 'ssh-keyscan hbase1 >> $HOME/.ssh/known_hosts'
-docker exec -u hadoop hbase2 bash -c 'ssh-keyscan hbase1 >> $HOME/.ssh/known_hosts'
+docker exec -u hadoop hbase2 bash -c 'ssh-keyscan hbase2 >> $HOME/.ssh/known_hosts'
 docker exec -u hadoop hbase2 bash -c 'ssh-keyscan hbase3 >> $HOME/.ssh/known_hosts'
 
 docker exec -u hadoop hbase3 bash -c 'ssh-keyscan hbase1 >> $HOME/.ssh/known_hosts'
@@ -41,6 +41,9 @@ docker exec -u hadoop hbase3 bash -c 'ssh-keyscan hbase3 >> $HOME/.ssh/known_hos
 
 docker exec -u hadoop hbase1 bash -c '/home/hadoop/hbase/bin/start-hbase.sh'
 
+# add to client /etc/hosts => 192.168.33.10 hbase1 hbase2 hbase3
+#client to remoote
+# bin/hbase shell -Dhbase.zookeeper.quorum=zoo1:2181,zoo2:2182,zoo3:2183 -Draining=false
 # http://192.168.33.10:16010,16030,16031
 # web hbase1 172.18.1.81:16010
 # web hbase2 172.18.1.82:16030
