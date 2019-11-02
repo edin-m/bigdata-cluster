@@ -1,0 +1,8 @@
+{"namespace": "io.leres.bigdata6.avro",
+ "type": "record",
+ "name": "User",
+ "fields": [
+     {"name": "userId", "type": "int"},
+     {"name": "userName",  "type": ["string", "null"]}
+ ]
+}

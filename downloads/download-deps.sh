@@ -22,3 +22,5 @@ unzip -d downloads downloads/gradle-5.6.2-bin.zip
 wget -P downloads https://www-eu.apache.org/dist/hbase/2.2.1/hbase-2.2.1-bin.tar.gz
 tar -C downloads -xf downloads/hbase-2.2.1-bin.tar.gz
 
+# avro toools
+wget -P downloads https://www-eu.apache.org/dist/avro/avro-1.9.1/java/avro-tools-1.9.1.jar

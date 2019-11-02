@@ -13,12 +13,21 @@ repositories {
 }
 
 dependencies {
+    // spring
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    // kafka
     implementation 'org.apache.kafka:kafka-streams'
     implementation 'org.springframework.kafka:spring-kafka'
 
+    // lombok
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+
+    // avro
+    implementation group: 'org.apache.avro', name: 'avro', version: '1.9.1'
+
+    // spring
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
